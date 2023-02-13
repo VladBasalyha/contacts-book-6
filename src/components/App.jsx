@@ -1,5 +1,5 @@
 // import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
@@ -10,18 +10,20 @@ export default function App() {
   const isShow = contacts.length > 0;
 
   return (
-      <div
+    <div
       style={{
-        padding: "12px 16px",
+        padding: '12px 16px',
       }}
-      >
-        <h1>Phonebook</h1>
-        <ContactForm/>
-        {isShow && <>
+    >
+      <h1>Phonebook</h1>
+      <ContactForm />
+      {isShow && (
+        <>
           <h2>Contacts</h2>
           <Filter />
           <ContactsList />
-        </>}
-      </div>
-    );
-};
+        </>
+      )}
+    </div>
+  );
+}
