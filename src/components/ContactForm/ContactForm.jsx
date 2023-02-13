@@ -25,7 +25,6 @@ export default function ContactForm() {
     dispatch(addContacts(newContact));
     e.currentTarget.reset();
   };
-
   return (
       <>
       <form className={css.form} onSubmit={handleSubmit}>

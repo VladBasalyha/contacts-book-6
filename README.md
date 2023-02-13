@@ -1,3 +1,6 @@
+**Read in other languages: [Русский](README.md), [Polska](README.pl.md),
+[English](README.en.md), [Spanish](README.es.md).**
+
 # React homework template
 
 Этот проект был создан при помощи
@@ -28,9 +31,14 @@ GitHub.
 
 1. Убедись что на компьютере установлена LTS-версия Node.js.
    [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
+2. Клонируй этот репозиторий.
+3. Измени имя папки с `react-homework-template` на имя своего проекта.
+4. Создай новый пустой репозиторий на GitHub.
+5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
+   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
+6. Установи базовые зависимости проекта командой `npm install`.
+7. Запусти режим разработки, выполнив команду `npm start`.
+8. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
    Эта страница будет автоматически перезагружаться после сохранения изменений в
    файлах проекта.
 
@@ -63,7 +71,7 @@ GitHub.
 Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
 выпадающем окне перейти по ссылке `Details`.
 
-![Deployment status](./assets/deploy-status.png)
+![Deployment status](./assets/status.png)
 
 ### Живая страница
 
@@ -84,7 +92,7 @@ GitHub.
 обязателен.
 
 ```jsx
-<BrowserRouter basename="/your_repo_name">
+<BrowserRouter basename="/your_repo_name/">
   <App />
 </BrowserRouter>
 ```
