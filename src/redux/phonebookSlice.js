@@ -25,10 +25,6 @@ const phonebookSlice = createSlice({
   },
 });
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
 
 export const phonebookReducer = persistReducer(
   persistConfig,
