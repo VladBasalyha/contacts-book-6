@@ -5,4 +5,5 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: grey;
 `;

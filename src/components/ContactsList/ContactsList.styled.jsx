@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const ContactListMarkup = styled.ul`
-
   width: 1370px;
   display: flex;
   align-items: center;
@@ -13,7 +12,6 @@ export const ContactListMarkup = styled.ul`
 `;
 
 export const ContactListItem = styled.li`
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,13 +25,11 @@ export const ContactListItem = styled.li`
 `;
 
 export const ContactListHeader = styled.h2`
-
   margin: 0;
   margin-bottom: auto;
 `;
 
 export const ContactListText = styled.p`
-
   margin: 0;
   font-weight: 600;
   color: #0b5e18;
