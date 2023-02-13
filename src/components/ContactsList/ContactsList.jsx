@@ -15,20 +15,16 @@ const ContactsList = () => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter)
     );
-  };
+  }
 
   return (
     <>
       <ul className={css.contactsList}>
-        {filtredContacts.map(({id, name, number}) => (
-          <ContactsItem
-            key={id}
-            contact={{ id, name, number }}
-          />
+        {filtredContacts.map(({ id, name, number }) => (
+          <ContactsItem key={id} contact={{ id, name, number }} />
         ))}
       </ul>
     </>
-  
   );
 };
 

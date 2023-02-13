@@ -13,6 +13,10 @@ export default function App() {
     <div
       style={{
         padding: '12px 16px',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
       <h1>Phonebook</h1>
