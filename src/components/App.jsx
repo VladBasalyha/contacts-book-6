@@ -1,47 +1,27 @@
-import { useEffect, useState } from 'react';
-import ContactForm from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { Container } from 'components/App.styled';
 
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getContactsData } from 'redux/contactsSlice';
 
-export function App() {
-  const [contacts, setContacts] = useState([]);
-  // const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    const getContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(getContacts);
-
-    if (parsedContacts !== 0) {
-      setContacts(parsedContacts);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  // const contactsList = useSelector(state => state.contacts.contacts);
+export const App = () => {
+  const { contactsList } = useSelector(getContactsData);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontSize: 24,
-        color: '#010101',
-        textShadow: 'rgb(232, 216, 137) 1px 0 10px',
-        backgroundColor: 'rgba(255, 0, 255, 0.032)',
-      }}
-    >
+    <Container>
       <h1>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
+
+      {!!contactsList.length && (
+        <>
+          <h2>Contacts</h2>
+          <Filter />
+        </>
+      )}
+
       <ContactList />
-    </div>
+    </Container>
   );
-}
+};

@@ -1,25 +1,28 @@
-import css from '../Filter/Filter.module.css';
+import {
+  FilterWrapper,
+  FilterInput,
+  FilterLabel,
+} from 'components/Filter/Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { setQuery } from 'features/Contacts/Contact.slice';
+import { updateFilter, getContactsData } from 'redux/contactsSlice';
 
-export function Filter() {
+export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
-  const onQueryChanged = query => {
-    dispatch(setQuery(query));
+  const { filter } = useSelector(getContactsData);
+
+  const onFilterChange = e => {
+    dispatch(updateFilter(e.currentTarget.value));
   };
 
   return (
-    <label className={css.filterLabel}>
-      Find contacts by name
-      <input
-        className={css.filterName}
+    <FilterWrapper>
+      <FilterLabel htmlFor="text">Find contacts by name</FilterLabel>
+      <FilterInput
         type="text"
         name="filter"
-        placeholder="Search contact"
         value={filter}
-        onChange={evt => onQueryChanged(evt.target.value)}
-      ></input>
-    </label>
+        onChange={onFilterChange}
+      />
+    </FilterWrapper>
   );
-}
+};

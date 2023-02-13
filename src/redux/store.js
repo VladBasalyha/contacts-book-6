@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { PhonebookReducer } from 'redux/phonebookSlice';
 import {
   persistStore,
   FLUSH,
@@ -9,18 +8,18 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { contactsReducer } from 'redux/contactsSlice';
 
 export const store = configureStore({
   reducer: {
-    phonebook: PhonebookReducer,
+    contacts: contactsReducer,
   },
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware({
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
-  },
+    }),
 });
 
 export const persistor = persistStore(store);

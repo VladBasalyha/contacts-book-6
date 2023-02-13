@@ -1,59 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from '../ContactList/ContactList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { delContact } from 'features/Contacts/Contact.slice';
-import { filteredContacts } from 'features/Contacts/selector';
-
-const Contact = ({ name, number, id, onDelContact }) => {
-  return (
-    <li className={css.item}>
-      <span>
-        {name}: {number}
-      </span>
-      <button
-        className={css.contactButton}
-        type="button"
-        onClick={() => {
-          onDelContact(id);
-        }}
-      >
-        Delete
-      </button>
-    </li>
-  );
-};
+import {
+  ContactListEl,
+  ContactListItem,
+  ContactItemHeader,
+  ContactItemText,
+  ContactItemButton,
+} from 'components/ContactList/ContactList.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContactsData, deleteContact } from 'redux/contactsSlice';
 
 export const ContactList = () => {
-  const contactsList = useSelector(filteredContacts);
-
   const dispatch = useDispatch();
-  const onDelContact = id => {
-    dispatch(delContact(id));
+  const { contactsList, filter } = useSelector(getContactsData);
+
+  const getNeeddedCard = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return contactsList.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
   };
 
+  const deleteCard = contactId => {
+    dispatch(deleteContact(contactId));
+  };
+
+  const neededCards = getNeeddedCard();
+
   return (
-    <ul>
-      {contactsList.map(contact => {
+    <ContactListEl>
+      {neededCards.map(({ name, number, id }) => {
         return (
-          <Contact
-            name={contact.name}
-            number={contact.number}
-            id={contact.id}
-            onDelContact={onDelContact}
-            key={contact.id}
-          ></Contact>
+          <ContactListItem key={id}>
+            <ContactItemHeader>{name}</ContactItemHeader>
+            <ContactItemText>{number}</ContactItemText>
+            <ContactItemButton
+              type="button"
+              onClick={() => {
+                deleteCard(id);
+              }}
+            >
+              Delete
+            </ContactItemButton>
+          </ContactListItem>
         );
       })}
-    </ul>
+    </ContactListEl>
   );
-};
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
 };
