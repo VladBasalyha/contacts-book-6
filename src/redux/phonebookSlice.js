@@ -30,7 +30,7 @@ const persistConfig = {
   storage,
 };
 
-export const PhonebookReducer = persistReducer(
+export const phonebookReducer = persistReducer(
   persistConfig,
   phonebookSlice.reducer
 );
