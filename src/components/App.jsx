@@ -34,15 +34,9 @@ export function App() {
         fontSize: 24,
         color: '#010101',
         textShadow: 'rgb(232, 216, 137) 1px 0 10px',
-        backgroundColor: 'rgba(0, 0, 255, 0.032)',
+        backgroundColor: 'rgba(255, 0, 255, 0.032)',
       }}
     >
-      {/* <>
-        {contactsList.length > 0 && (
-          <h3>You have {contactsList.length} contast(s)</h3>
-        )}
-      </> */}
-
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
