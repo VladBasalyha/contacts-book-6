@@ -1,34 +1,27 @@
-import { ContactList } from './ContactList/ContactList';
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import React from 'react';
+// import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-export const App = () => {
+import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
+import ContactsList from './ContactsList/ContactsList';
+
+export default function App() {
+  const contacts = useSelector(state => state.contacts);
+  const isShow = contacts.length > 0;
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 20,
-        color: '#010101',
-      }}
-    >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2> Contacts</h2>
       <div
-        style={{
-          boxShadow: '0px 0px 6px 5px rgba(128, 187, 236, 0.75)',
-          borderRadius: '4px',
-          padding: '20px',
-        }}
+      style={{
+        padding: "12px 16px",
+      }}
       >
-        <Filter />
-        <ContactList />
+        <h1>Phonebook</h1>
+        <ContactForm/>
+        {isShow && <>
+          <h2>Contacts</h2>
+          <Filter />
+          <ContactsList />
+        </>}
       </div>
-    </div>
-  );
+    );
 };
